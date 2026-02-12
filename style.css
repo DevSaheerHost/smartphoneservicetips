@@ -81,6 +81,7 @@ body{
 :root{
     --bg: #FFFFFF;
     --card-bg: #F6F6F6;
+    /* --card-bg: #FDFDFD; */
     --text: #303030;
     --accent: #0A8CFF;
     --accent-dim: #C0E2FF;
@@ -97,12 +98,51 @@ body{
     --font-sm: 12px;
 }
 
+
+@media (prefers-color-scheme: dark) {
+
+
+:root{
+  --dim: #737373;
+  --card-bg: #505050;
+  --card-bg: #222222;
+  --dim: var(--card-bg);
+  
+  --border-dim: #7C7C7C;
+  --border-dim: #4F4F4F;
+  --gray: #959595;
+  --bg: #000;
+  --text: #f2f2f2;
+  --accent: #256FB0;
+}
+::placeholder{
+  color: #B2B2B2;
+}
+input{
+  color: #fff;
+}
+  body {
+    background: #000;
+    color: #D2D2D2;
+  }
+
+  .search-container,
+  .brand-tab-container {
+    background: #111;
+  }
+
+  .latest-tips .card {
+    background: #1A1A1A;
+  }
+
+}
+
+
 .container{
   padding: 2rem;
 }
 
 .search-container{
-  background: lightgray;
   background: var(--dim);
   border-radius: 100px;
   border-radius: var(--radius-big);
@@ -157,7 +197,6 @@ input{
   border-radius: var(--radius);
   padding: 0.7rem;
   background: var(--card-bg);
-  background: #FDFDFD;
   animation: blutList 0.3s ease;
 }
 @keyframes blutList{
@@ -586,7 +625,7 @@ input:focus, .box:focus-within{
 }
 
 .popup-sheet {
-  background: #fff;
+  background: var(--card-bg);
   width: 100%;
   max-width: 420px;
   border-radius: 20px;
@@ -628,20 +667,21 @@ input:focus, .box:focus-within{
 
 
 .action-btn.primary {
-  background: #0BA2FF;
+  background: var(--accent);
   color: #fff;
 }
 
 .action-btn.secondary {
-  background: #f2f2f2;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .popup-close-btn {
   margin: 10px;
-  background: #fff;
+  background: var(--card-bg);
   border: none;
   font-size: 16px;
-  color: #333;
+  color: var(--text);
   padding: 14px;
   border-radius: 12px;
   width: 100%;
