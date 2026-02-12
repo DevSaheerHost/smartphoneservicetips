@@ -12,10 +12,33 @@ body{
   transition: all 0.4s ease;
   opacity:0;
   filter: blur(5px);
+  max-height: 100dvh;
+  overflow-y: auto;
 }
+
+svg{
+  width: 30px;
+}
+
 img{
   max-width: 100%;
 }
+
+button:disabled {
+  opacity: 0.5 ;
+  cursor: not-allowed ;
+}
+
+button:disabled:hover {
+  background: #cfcfcf;
+  transform: none;
+}
+
+button:disabled:active {
+  transform: none;
+  box-shadow: none;
+}
+
 
 .mt-05{
   margin-top: 0.5rem;
@@ -91,6 +114,9 @@ body{
 input{
   font-size: var(--font-md);
 }
+.search-container input:hover{
+  border: none;
+}
 
 
 
@@ -132,6 +158,12 @@ input{
   padding: 0.7rem;
   background: var(--card-bg);
   background: #FDFDFD;
+  animation: blutList 0.3s ease;
+}
+@keyframes blutList{
+  0%{
+    filter: blur(3px);
+  }
 }
 
 .list-item .flex{
@@ -142,6 +174,7 @@ input{
 .list-item .img{
   height: 80px;
   width: 80px;
+  min-width: 80px;
   border-radius: var(--radius);
   background: var(--dim);
   overflow: hidden;
@@ -191,13 +224,14 @@ input{
 }
 .list-item .space{
   min-width: 80px;
+  margin-top: 0.5rem;
   text-align: center;
 }
 .list-item .space p{
-  color: #FF4141;
-  background: #FFEBEB;
+  /*color: #FF4141;*/
+  /* background: #FFEBEB; */
   border-radius: var(--radius-small);
-  padding: 0.07rem 0.5rem;
+  padding: 0.2rem 0.5rem;
   font-size: 13px;
   font-weight: 600;
   max-width: fit-content;
@@ -271,6 +305,8 @@ input{
 }
 .img-flex .box{
   width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 .img-flex .box .nav{
@@ -285,9 +321,9 @@ input{
 }
 
 .img-flex .box .nav p{
-  background: var(--accent-dim);
-  padding: 0.2rem 0.7rem;
-  color: var(--accent);
+  /* background: var(--accent-dim); */
+     padding: 0.2rem 0.7rem;
+  /* color: var(--accent); */
   font-weight: 600;
   font-size: var(--font-sm);
   border-radius: var(--radius-big);
@@ -296,6 +332,14 @@ input{
 .img-flex .comments{
   font-size: 14px;
   padding: 0.2rem 0.5rem;
+}
+.comments p{
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: var(--font-sm);
 }
 
 
@@ -415,6 +459,9 @@ input{
   overflow: hidden;
   display: flex;
 }
+.createNew .chip *{
+  transition: all 0.2s ease;
+}
 .createNew .chip span{
   background: var(--dim);
   color: var(--gray);
@@ -427,11 +474,18 @@ input{
   align-items: start;
   gap: 1rem;
 }
-.createNew .chip .easy.active{
-  background: #C0FFDB;
-  color: #1FB660;
+.success.active, p.easy, p.low{
+  background: #C0FFDB !important;
+  color: #1FB660 !important;
 }
-
+.warning.active, p.medium{
+  background: #FFE8B3 !important;
+  color: #E6A100 !important;
+}
+.error.active, p.hard{
+  background: #FFD6D6 !important;
+  color: #E03131 !important;
+}
 .createNew .time-chip{
   margin-top: 0.5rem;
   border: 1px solid var(--border-dim);
@@ -442,7 +496,16 @@ input{
   font-weight: 600;
   color: var(--gray);
 }
+.createNew .time-chip input{
+  font-size: var(--font-sm);
+  padding: 0.3rem;
+  
+}
 select{color: var(--gray);font-weight: 600;}
+textarea{
+  overflow: auto;
+  max-width: 100%;
+}
 
 .createNew button.submit{
   background: var(--accent);
@@ -489,11 +552,15 @@ button.float{
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  /* bottom: env(safe-area-inset-bottom); */
+
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.34);
 }
 button.float svg{
   height: 25px;
+}
+input:focus, .box:focus-within{
+  border: 1px solid var(--text);
 }
 
 
@@ -526,6 +593,8 @@ button.float svg{
   padding: 20px;
   text-align: center;
   transition: transform 0.3s ease;
+    
+
 }
 .popup-sheet-close{
   transform: translateY(500px);
@@ -584,6 +653,37 @@ button.float svg{
 
 
 
+
+.comment-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 2rem;
+  border-radius: var(--radius);
+  
+  background: var(--dim);
+  padding: 0.5rem 1rem
+}
+.comment-bar input:hover{
+  border: none;
+}
+
+.comment-bar svg{
+  color: #fff;
+  width: 20px;
+}
+.comment-bar .sent-comment{
+  background: black;
+  background: var(--gray);
+  color: #fff;
+  border-radius: var(--radius-big);
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hidden{
-  display: none;
+  display: none !important;
 }
